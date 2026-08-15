@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minha Primeira Galeria - GitHub</title>
+    <title>Feed do Meu Pet 🐾</title>
 
     <style>
         /* Reset básico para limpar margens do navegador */
@@ -15,7 +15,7 @@
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: #f7f5f0; /* Tom suave e acolhedor */
             color: #333;
         }
 
@@ -27,16 +27,16 @@
         }
 
         header h1 {
-            color: #2c3e50;
+            color: #e67e22; /* Laranja caloroso */
             margin-bottom: 10px;
         }
 
-        /* --- CONCEITO: Flexbox e Classes --- */
+        /* Container dos Cards em Flexbox */
         .gallery-container {
             display: flex;
-            flex-wrap: wrap; /* Faz os cards irem para a linha de baixo se não couberem */
-            justify-content: center; /* Centraliza os cards na tela */
-            gap: 30px; /* Espaçamento moderno entre os elementos flex */
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
             padding: 40px 20px;
         }
 
@@ -44,25 +44,25 @@
         .card {
             background-color: #ffffff;
             border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            overflow: hidden; /* Garante que a imagem respeite as bordas arredondadas */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
             width: 300px;
             transition: transform 0.2s;
         }
 
         .card:hover {
-            transform: translateY(-5px); /* Efeito sutil ao passar o mouse */
+            transform: translateY(-5px);
         }
 
-        /* --- CONCEITO: Imagens e Espaçamentos --- */
+        /* Imagens dos Cards */
         .card img {
-            width: 100%; /* A imagem ocupa toda a largura do card */
+            width: 100%;
             height: 200px;
-            object-fit: cover; /* Não distorce a imagem */
+            object-fit: cover;
         }
 
         .card-content {
-            padding: 20px; /* Espaçamento interno do texto */
+            padding: 20px;
         }
 
         .card-content h3 {
@@ -77,9 +77,9 @@
             line-height: 1.4;
         }
 
-        /* Estilo do Botão de Curtida */
+        /* Botão de Curtida */
         .like-btn {
-            background-color: #ff4757;
+            background-color: #ff7675;
             color: white;
             border: none;
             padding: 10px 15px;
@@ -90,47 +90,50 @@
         }
 
         .like-btn:hover {
-            background-color: #e84118;
+            background-color: #d63031;
         }
 
-        /* Classe dinâmica que o JS pode adicionar */
+        /* Estado ativado ao curtir */
         .like-btn.liked {
-            background-color: #2ed573;
+            background-color: #00b894;
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>📸 Meu Primeiro Feed Interativo</h1>
-        <p>Projeto criado nas aulas de Web Development e hospedado no GitHub!</p>
+        <h1>🐾 Feed do Meu Pet</h1>
+        <p>Acompanhe os melhores momentos, brincadeiras e preguiças do meu companheiro!</p>
     </header>
 
     <main class="gallery-container">
 
+        <!-- Card 1 -->
         <div class="card">
-            <img src="https://picsum.photos/id/1015/300/200&quot; alt="Paisagem de Montanha">
+            <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=500" alt="Cachorro brincando no parque">
             <div class="card-content">
-                <h3>Aventura nas Montanhas</h3>
-                <p>Um dia incrível explorando a natureza e testando meus códigos.</p>
+                <h3>Hora do Passeio 🎾</h3>
+                <p>Nada supera a alegria de ver a coleira e saber que é hora de ir ao parque!</p>
                 <button class="like-btn">❤️ <span class="like-count">0</span> Curtidas</button>
             </div>
         </div>
 
+        <!-- Card 2 -->
         <div class="card">
-            <img src="https://picsum.photos/id/1025/300/200&quot; alt="Cachorro fofo">
+            <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=500" alt="Gato tirando uma soneca">
             <div class="card-content">
-                <h3>Meu Companheiro de Code</h3>
-                <p>Garante que o código não tenha nenhum bug (ou sim!).</p>
+                <h3>Soneca da Tarde 💤</h3>
+                <p>Encontrou o raio de sol perfeito no sofá e decidiu recarregar as energias.</p>
                 <button class="like-btn">❤️ <span class="like-count">0</span> Curtidas</button>
             </div>
         </div>
 
+        <!-- Card 3 -->
         <div class="card">
-            <img src="https://picsum.photos/id/1043/300/200&quot; alt="Espaço de trabalho">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=500" alt="Cachorro olhando fixo">
             <div class="card-content">
-                <h3>Setup Organizado</h3>
-                <p>Foco total nas aulas de HTML, CSS e JavaScript desta semana.</p>
+                <h3>De Olho no Petisco 🦴</h3>
+                <p>Aquele olhar irresistível quando ouve o barulho de algum pacote se abrindo.</p>
                 <button class="like-btn">❤️ <span class="like-count">0</span> Curtidas</button>
             </div>
         </div>
@@ -138,37 +141,25 @@
     </main>
 
     <script>
-        // 1. Seleciona TODOS os botões de curtida da página (Eventos em múltiplos elementos)
+        // Seleciona todos os botões de curtida
         const botoesLike = document.querySelectorAll('.like-btn');
 
-        // 2. Passa por cada botão usando o forEach
+        // Adiciona a lógica de clique para cada botão
         botoesLike.forEach(function(botao) {
-           
-            // Adiciona o evento de clique para CADA um dos botões
             botao.addEventListener('click', function() {
-               
-                // Encontra o elemento <span> de número de curtidas específico DESTE card
                 const spanContador = botao.querySelector('.like-count');
-               
-                // Pega o número atual que está no texto e transforma em número inteiro
                 let curtidasAtuais = parseInt(spanContador.textContent);
-               
-                // --- CONCEITO: Lógica de curtidas ---
-                // Verifica se o usuário já curtiu (checando se a classe 'liked' existe no botão)
+
                 if (botao.classList.contains('liked')) {
-                    // Se já tinha curtido: remove a classe e diminui 1 do contador
                     botao.classList.remove('liked');
                     curtidasAtuais--;
                 } else {
-                    // Se não tinha curtido: adiciona a classe e aumenta 1 no contador
                     botao.classList.add('liked');
                     curtidasAtuais++;
                 }
-               
-                // Atualiza o texto do HTML com o novo valor (Contador de likes)
+
                 spanContador.textContent = curtidasAtuais;
             });
-           
         });
     </script>
 </body>
